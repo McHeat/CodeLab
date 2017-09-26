@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.mcheat.code.lab</groupId>
+    <artifactId>codelab</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+
+    <!-- 声明子模块 -->
+    <modules>
+        <module>springlab</module>
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>haier-repo</id>
+            <name>Haier Repo</name>
+            <url>http://10.164.194.139:8081/nexus/content/repositories/public/</url>
+        </repository>
+    </repositories>
+
+</project>
