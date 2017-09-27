@@ -35,7 +35,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .headers().defaultsDisabled().cacheControl();
         // sessionManagement并发线程控制，需添加HttpSessionEventPublisher监听器
-        http.sessionManagement().maximumSessions(1).maxSessionsPreventsLogin(false);
+        http.sessionManagement().maximumSessions(1).maxSessionsPreventsLogin(false)
+//                .and().sessionFixation().none()   // sessionFixation攻击保护方案
+        ;
     }
 
      // 效果与configure(AuthenticationManagerBuilder auth)等效
