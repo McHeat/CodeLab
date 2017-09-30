@@ -15,6 +15,12 @@
         <module>springlab</module>
     </modules>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+    </properties>
+
     <repositories>
         <repository>
             <id>haier-repo</id>
@@ -22,5 +28,20 @@
             <url>http://10.164.194.139:8081/nexus/content/repositories/public/</url>
         </repository>
     </repositories>
+
+    <build>
+        <plugins>
+            <!-- 修改Java编译版本 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

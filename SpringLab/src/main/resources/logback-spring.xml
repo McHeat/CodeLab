@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+
+    <!-- Spring Boot扩展属性 -->
+    <springProperty name="APP" source="spring.application.name" defaultValue="Unknown"/>
+
+    <!-- 属性 -->
+    <property name="LOG_HOME" value="/export/home/app/applog/${APP}"/>
+
+    <!-- Spring Boot中自带定义文件 -->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <!-- 定义Console输出方式 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 定义文件输出方式 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender" additivity="false">
+        <file>${LOG_HOME}/${APP}_detail.log</file>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/${APP}_detail.log.%d{yyyyMMddHH}</fileNamePattern>
+            <maxHistory>2</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- 定义使用方式 -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>

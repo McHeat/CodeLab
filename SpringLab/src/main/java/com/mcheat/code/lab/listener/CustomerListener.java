@@ -2,7 +2,7 @@ package com.mcheat.code.lab.listener;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.boot.context.event.ApplicationPreparedEvent;
 import org.springframework.context.ApplicationListener;
 
 /**
@@ -14,11 +14,11 @@ import org.springframework.context.ApplicationListener;
  * ApplicationReadyEvent 可监听到
  * ApplicatinFailEvent 可监听到
  */
-public class CustomerListener implements ApplicationListener<ApplicationReadyEvent> {
+public class CustomerListener implements ApplicationListener<ApplicationPreparedEvent> {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public void onApplicationEvent(ApplicationReadyEvent event) {
+    public void onApplicationEvent(ApplicationPreparedEvent event) {
         logger.info("正在执行。。。。。。。");
     }
 }

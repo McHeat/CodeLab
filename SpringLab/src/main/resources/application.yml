@@ -1,6 +1,8 @@
 server:
   port: 8888
 spring:
+  application:
+    name: SpringLab
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/spring_lab
     username: root
@@ -12,3 +14,18 @@ spring:
     initial-size: 5
   autoconfigure:
     exclude: javax.sql.DataSource.class
+custom:
+  custom-user-info:
+    - name: wangjy
+      desc: wangjy is genius
+    - name: zhangjun
+      desc: sb
+---
+spring:
+  profiles: debug
+server:
+  port: 8889
+custom:
+  custom-user-info:
+    - name: wangjy01
+      desc: wangjy is genius
