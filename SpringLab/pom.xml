@@ -6,19 +6,14 @@
 	<!-- 继承父模块 -->
 	<parent>
 		<groupId>com.mcheat.code.lab</groupId>
-		<artifactId>codelab</artifactId>
+		<artifactId>code-lab</artifactId>
 		<version>1.0.0</version>
 		<relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
 	</parent>
-	<artifactId>springlab</artifactId>
+	<artifactId>spring-lab</artifactId>
 	<packaging>jar</packaging>
 	<name>SpringLab</name>
 	<description>Discovery of Spring</description>
-
-	<properties>
-		<spring-boot.version>1.5.7.RELEASE</spring-boot.version>
-		<spring-cloud.version>Dalston.SR3</spring-cloud.version>
-	</properties>
 
 	<dependencies>
 		<dependency>
@@ -46,7 +41,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -62,42 +60,11 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>${spring-boot.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<!-- 指定插件目标 -->
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
 
 </project>

@@ -6,25 +6,41 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.mcheat.code.lab</groupId>
-    <artifactId>codelab</artifactId>
+    <artifactId>code-lab</artifactId>
     <packaging>pom</packaging>
+    <name>CodeLab</name>
     <version>1.0.0</version>
 
     <!-- 声明子模块 -->
     <modules>
-        <module>springlab</module>
+        <module>SpringLab</module>
+        <module>EurekaLab</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <spring-boot.version>1.5.9.RELEASE</spring-boot.version>
+        <!--<spring-boot.version>1.5.7.RELEASE</spring-boot.version>-->
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope><!-- 将pom中的dependencyManagement配置导入并合并到当前pom中 -->
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <repositories>
         <repository>
-            <id>haier-repo</id>
-            <name>Haier Repo</name>
+            <id>Maven-Repo</id>
+            <name>Maven-Repo</name>
             <url>http://10.164.194.139:8081/nexus/content/repositories/public/</url>
         </repository>
     </repositories>
@@ -40,6 +56,26 @@
                     <target>${java.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
+            </plugin>
+            <!-- 使用UTF-8编码处理资源文件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!-- 指定插件目标 -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
