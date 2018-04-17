@@ -16,6 +16,7 @@
         <module>SpringLab</module>
         <module>EurekaLab</module>
         <module>MicroServiceLab</module>
+        <module>QuickStart</module>
     </modules>
 
     <properties>
